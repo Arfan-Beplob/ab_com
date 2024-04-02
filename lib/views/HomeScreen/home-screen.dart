@@ -143,10 +143,48 @@ class HomeScreen extends StatelessWidget {
                               ).box.white.margin(const EdgeInsets.symmetric(horizontal: 4)).roundedSM.padding(const EdgeInsets.all(8)).make()
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
+
+                    //3rd swiper
+                    20.heightBox,
+                    VxSwiper.builder(
+                        aspectRatio: 16/9,
+                        autoPlay: true,
+                        height: 150,
+                        enlargeCenterPage: true,
+                        itemCount: secondSliderList.length,
+                        itemBuilder: (context,index){
+                          return Image.asset(
+                            secondSliderList[index],
+                            fit: BoxFit.fill,
+                          ).box.rounded.clip(Clip.antiAlias).margin(const EdgeInsets.symmetric(horizontal: 8)).make();}
+                    ),
+                    20.heightBox,
+                    GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 6,
+                        shrinkWrap: true,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                            mainAxisExtent: 300,
+                            crossAxisCount: 02),
+                        itemBuilder: (context,index){
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(featuredProductImage[index],width: 200,height:200,fit: BoxFit.cover,),
+                          const Spacer(),
+                          featuredProductTitle[index].text.fontFamily(semibold).color(darkFontGrey).make(),
+                          10.heightBox,
+                          featuredProductPrice[index].text.color(redColor).size(16).fontFamily(bold).make(),
+                          10.heightBox,
+                        ],
+                      ).box.white.roundedSM.margin(const EdgeInsets.symmetric(horizontal: 4)).padding(EdgeInsets.all(8)).make();
+                        })
                   ],
                 ),
               ),
